@@ -28,4 +28,41 @@ async function analyserScreenshot() {
 
     const data = await response.json();
 
-    if (
+    if (data.erreur) {
+      resultatDiv.innerHTML = `❌ Erreur IA : ${data.erreur}`;
+      return;
+    }
+
+    let resultat = `
+      🧠 <strong>Analyse IA : Atomic Mansa v2.1</strong><br><br>
+      📍 <strong>Paire détectée :</strong> ${data.paire}<br>
+      ⏱ <strong>Timeframe :</strong> ${data.timeframe}<br>
+      🧭 <strong>Signal visuel :</strong> ${data.signal}<br><br>
+
+      📉 Structure : ${data.structure}<br>
+      ⚡ CISD : ${data.cisd}<br>
+      💧 Liquidité : ${data.liquidity}<br>
+      🧱 OB : ${data.ob}<br>
+      📊 Volume : ${data.volume}<br><br>
+
+      📌 <strong>Recommandation :</strong><br>
+      Type d'ordre : ${data.ordre}<br>
+      Zone d’entrée : ${data.entry_zone}<br>
+      SL : ${data.sl}<br>
+      TP : ${data.tp}<br><br>
+
+      Justification : ${data.justification}<br>
+      🔒 Probabilité : ${data.probabilite}<br><br>
+    `;
+
+    if (data.blu_cot) {
+      resultat += `📊 <strong>BLU COT™ :</strong> ${data.blu_cot.commentaire}<br>`;
+    }
+
+    resultatDiv.innerHTML = resultat;
+
+  } catch (error) {
+    console.error("Erreur d’analyse :", error);
+    resultatDiv.innerHTML = `❌ Erreur : ${error.message}`;
+  }
+}
