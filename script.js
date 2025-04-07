@@ -66,3 +66,4 @@ async function analyserScreenshot() {
     resultatDiv.innerHTML = `❌ Erreur : ${error.message}`;
   }
 }
+
