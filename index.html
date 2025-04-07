@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atomic View Mansa™</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="mansa-logo.png" alt="Logo Mansa" class="logo" />
+    <h1>Atomic View Mansa™</h1>
+
+    <input type="file" id="screenshot" accept="image/*" />
+
+    <label class="toggle">
+      <input type="checkbox" id="cotToggle" />
+      <span>Activer BLU COT™</span>
+    </label>
+
+    <button onclick="analyserScreenshot()">🔍 Analyser</button>
+    <div id="resultat" class="resultat"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
